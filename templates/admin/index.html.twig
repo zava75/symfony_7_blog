@@ -1,0 +1,48 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+<h1>Admin</h1>
+    <h2>Categories with Post Count</h2>
+    <div>
+        <ul>
+        {% for parent in categories %}
+            <li class="mb-2">
+                <h6 class="mb-2">{{ parent.name }}</h6>
+            </li>
+                {% if parent.children %}
+                    <ul class="ms-4 ps-0">
+                        {% for child in parent.children %}
+                            <li>
+                                <h6>{{ child.name }} ( {{ child.post_count }} )</h6>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <ul>
+                        <li><h6 class="text-muted">No active subcategories</h6></li>
+                    </ul>
+                {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+<div class="my-3">
+    <h4>Clear cache</h4>
+    <div class="d-flex gap-2 flex-wrap my-3">
+        <form method="post" action="{{ path('admin_clear_cache_all') }}" class="d-inline">
+            <button class="btn btn-danger">Clear all cache</button>
+        </form>
+
+        <form method="post" action="{{ path('admin_clear_cache_post') }}" class="d-inline">
+            <button class="btn btn-warning">Clear post cache</button>
+        </form>
+
+        <form method="post" action="{{ path('admin_clear_cache_category') }}" class="d-inline">
+            <button class="btn btn-warning">Clear category cache</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

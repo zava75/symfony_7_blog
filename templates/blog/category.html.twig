@@ -1,0 +1,33 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}{{ category.name | default('Default name') }}{% endblock %}
+{% block description %}{{ category.description | default('Default description') }}{% endblock %}
+
+{% block body %}
+
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+            {% if category.parent %}
+                <li class="breadcrumb-item"><a href="{{ path('blog_category',
+                    {'slug': category.parent.slug } ) }}">{{ category.parent.name }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+            {% else %}
+                <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+            {% endif %}
+        </ol>
+    </nav>
+
+    <div class="example-wrapper">
+        <h1>{{ category.name }}</h1>
+        <div class="row">
+            <div class="col-12 mb-3">
+                {% if category.article %}
+                    <p class="card-text"><strong>Article:</strong> {{ category.article|nl2br }}</p>
+                {% endif %}
+            </div>
+            {% include 'components/posts-list.html.twig' %}
+        </div>
+
+    </div>
+{% endblock %}

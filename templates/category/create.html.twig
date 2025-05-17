@@ -1,0 +1,25 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}Create Category{% endblock %}
+
+{% block body %}
+    <h1>Create Category</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.article) }}
+    {{ form_row(form.parent) }}
+    {{ form_row(form.isActive) }}
+
+    {{ form_row(form._token) }}
+
+    <button class="btn btn-primary">Send</button>
+    {{ form_end(form, { render_rest: false }) }}
+
+    <div class="mt-5">
+        <a class="btn btn-dark" href="{{ path('admin') }}">← Back to admin panel</a>
+    </div>
+{% endblock %}
+

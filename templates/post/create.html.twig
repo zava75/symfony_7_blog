@@ -1,0 +1,30 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block body %}
+    <h1>Create Post</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.image) }}
+    {{ form_row(form.article) }}
+    {{ form_row(form.category) }}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ form_row(form.isActive) }}
+    {% endif %}
+
+    {{ form_row(form._token) }}
+
+    <button class="btn btn-primary">Send</button>
+    {{ form_end(form, { render_rest: false }) }}
+
+    <div class="mt-5">
+        <a class="btn btn-dark" href="{{ path('cabinet') }}">← Back to cabinet</a>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,106 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}{{ post.name }}{% endblock %}
+{% block description %}{{ post.description }}{% endblock %}
+
+{% block body %}
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('blog_category',
+                    {'slug': post.category.parent.slug } ) }}">{{ post.category.parent.name }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ path('blog_category',
+                    { 'slug': post.category.slug } ) }}">{{ post.category.name }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ post.name }}</li>
+        </ol>
+    </nav>
+
+    {% include 'layouts/search.html.twig' %}
+
+    <div>
+        <h1 class="display-8">{{ post.name }}</h1>
+        {% if post.image %}
+        <img src="{{ asset('uploads/images/' ~ post.image) }}" alt="{{ post.name }}">
+        {% endif %}
+        <p class="mt-3">Author {{ post.user ? post.user.name : Unknown }}</p>
+        <b class="d-block my-2">{{ post.createdAt|date('d.m.Y') }}</b>
+        <p class="card-text flex-grow-1">{{ post.article }}</p>
+    </div>
+
+    <div class="card my-3 p-4">
+        <h4 class="display-10">Comments</h4>
+        {% if comments is not empty %}
+            {% for comment in comments %}
+                <div class="my-3">
+                    <h6>{{ comment.author }}</h6>
+                    <b>{{ comment.email }}</b>
+                    <p>{{ comment.content }}<br>{{ comment.createdAt|date('d.m.Y') }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="my-3">
+                <h6>No comments available</h6>
+                <b>Be the first to comment!</b>
+                <p>No comments have been posted yet. Please check back later.</p>
+            </div>
+        {% endif %}
+
+        <div class="my-3">
+            {{ form_start(form) }}
+
+            {{ form_row(form.author) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.content) }}
+
+            {{ form_row(form._token) }}
+
+            <button class="btn btn-primary">Send</button>
+            {{ form_end(form, { render_rest: false }) }}
+        </div>
+    </div>
+
+    <h3 class="mt-5">Posts Category</h3>
+    {% for post in posts %}
+        <div class="mb-3 bg-light rounded-lg">
+            {% if post.image %}
+
+                <div class="row" style="margin: 0">
+                    <div class="col-md-6 bg-image" style="background-image: url('{{ asset('uploads/images/' ~ post.image) }}');"></div>
+                    <div class="col-md-6">
+                        <div class="p-4 d-flex flex-column h-100">
+                            <h5 class="card-title py-4">{{ post.name }}</h5>
+                            <a class="" href="{{ path('blog_category',
+                                {'slug': post.category_slug} ) }}" >{{ post.category_name }}</a>
+                            <b>Author: {{ post.user_name ? post.user_name : Unknown }}</b>
+                            <b class="d-block my-2">{{ post.created_at|date('d.m.Y') }}</b>
+                            <p class="card-text flex-grow-1">{{ post.article|slice(0, 200) ~ '...' }}</p>
+                            <span><a href="{{ path('blog_post', { 'category' : post.parent_category_slug ,
+                                    'subcategory' : post.category_slug, 'slug': post.slug}) }}" class="btn btn-primary">Read me</a></span>
+                        </div>
+                    </div>
+                </div>
+
+            {% else %}
+
+                <div class="row" style="margin: 0">
+                    <div class="col-md-12">
+                        <div class="p-4 d-flex flex-column h-100">
+                            <h5 class="card-title py-4">{{ post.name }}</h5>
+                            <a class="" href="{{ path('blog_category',
+                                {'slug': post.category_slug} ) }}" >{{ post.category_name }}</a>
+                            <b>Author: {{ post.user_name ? post.user_name : Unknown }}</b>
+                            <b class="d-block my-2">{{ post.created_at|date('d.m.Y') }}</b>
+                            <p class="card-text flex-grow-1">{{ post.article|slice(0, 200) ~ '...' }}</p>
+                            <span><a href="{{ path('blog_post', { 'category' : post.parent_category_slug ,
+                                    'subcategory' : post.category_slug, 'slug': post.slug}) }}" class="btn btn-primary">Read me</a></span>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+        </div>
+    {% else %}
+        <p>No posts</p>
+    {% endfor %}
+
+{% endblock %}

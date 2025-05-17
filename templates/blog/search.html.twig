@@ -1,0 +1,17 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}Search posts{% endblock %}
+{% block description %}Search posts{% endblock %}
+
+{% block body %}
+
+  {% include 'layouts/search.html.twig' %}
+
+<div>
+    <h1>Search posts: {{ querySearch }}</h1>
+    <div class="mt-4 row">
+        {% include 'components/posts-list.html.twig' %}
+    </div>
+</div>
+
+ {% endblock %}

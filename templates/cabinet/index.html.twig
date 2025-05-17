@@ -1,0 +1,9 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}Cabinet{% endblock %}
+
+{% block body %}
+    <h1>Cabinet {{ app.user.email }}</h1>
+    <h3>User posts</h3>
+{% include 'components/posts-list-user.html.twig' %}
+{% endblock %}

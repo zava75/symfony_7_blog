@@ -1,0 +1,45 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="col-lg-6 col-md-8 col-12">
+        <h2 class="mb-4">Register</h2>
+
+        {{ form_start(registrationForm) }}
+
+        <div class="mb-3">
+            {{ form_label(registrationForm.name) }}
+            {{ form_widget(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.name) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(registrationForm.email) }}
+            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.email) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(registrationForm.plainPassword.first) }}
+            {{ form_widget(registrationForm.plainPassword.first) }}
+            {{ form_errors(registrationForm.plainPassword.first) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(registrationForm.plainPassword.second) }}
+            {{ form_widget(registrationForm.plainPassword.second) }}
+            {{ form_errors(registrationForm.plainPassword.second) }}
+        </div>
+
+        <div class="form-check mb-3">
+            {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+            {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
+            {{ form_errors(registrationForm.agreeTerms) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Account</button>
+
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

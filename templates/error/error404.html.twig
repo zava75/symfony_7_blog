@@ -1,0 +1,18 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}404 NotFound{% endblock %}
+{% block description %}404 NotFound{% endblock %}
+
+{% block body %}
+
+    {% include 'layouts/search.html.twig' %}
+
+    <div>
+    <h1>404 NotFound</h1>
+
+    <div class="mt-4 row">
+        <p>Custom text page 404</p>
+        <a href="{{ path('home') }}" class="btn btn-primary">Back home</a>
+    </div>
+
+{% endblock %}

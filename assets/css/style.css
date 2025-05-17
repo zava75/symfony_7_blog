@@ -1,0 +1,213 @@
+* {
+    border-radius: 0 !important;
+    font-weight: 300 !important;
+}
+
+.container > .row, .container > nav.navbar {
+    padding: 1em;
+}
+
+.navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1em;
+    right: 1em;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+b, strong {
+    font-weight: bolder !important;
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    margin-bottom: 1.5rem;
+    font-weight: 300 !important;
+    line-height: 1.2 !important;
+}
+
+a.nav-link, button.nav-link  {
+    color: #333;
+}
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none;
+    position: absolute;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='%23212529' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+ul.list {
+    display: block;
+    margin-bottom: 0.4em;
+}
+
+ul.list li {
+    display: inline-block;
+    margin-bottom: 0.4em;
+}
+
+#sidebar h5 {
+    padding-left: 1rem;
+}
+
+.img-thumbnail {
+    border: none !important;
+    padding: 0 !important;
+}
+
+.bg-image {
+    background-size: cover;
+    background-position: center center;
+    height: 400px;
+    background-repeat: no-repeat;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+.bg-image-example {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 20px 0;
+}
+
+* {
+    border-radius: 0 !important;
+    font-weight: 300 !important;
+}
+
+.container > .row, .container > nav.navbar {
+    padding: 1em;
+}
+
+.navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1em;
+    right: 1em;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+b, strong {
+    font-weight: bolder !important;
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    margin-bottom: 1.5rem;
+    font-weight: 300 !important;
+    line-height: 1.2 !important;
+}
+
+a.nav-link, button.nav-link  {
+    color: #333;
+}
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none;
+    position: absolute;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='%23212529' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+ul.list {
+    display: block;
+    margin-bottom: 0.4em;
+}
+
+ul.list li {
+    display: inline-block;
+    margin-bottom: 0.4em;
+}
+
+#sidebar h5 {
+    padding-left: 1rem;
+}
+
+.img-thumbnail {
+    border: none !important;
+    padding: 0 !important;
+}
+
+.bg-image {
+    background-size: cover;
+    background-position: center center;
+    height: 400px;
+    background-repeat: no-repeat;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+.bg-image-example {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 20px 0;
+}

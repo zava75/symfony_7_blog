@@ -1,0 +1,88 @@
+<div id="sidebar" class="bg-light rounded-lg">
+    <div class="card-body py-4">
+    <h5>Sidebar</h5>
+      <nav>
+          <ul>
+            {% for category in global_categories %}
+              <li>
+                  <a class="text-decoration-none link-dark" href="{{ path('blog_category',
+                      {'slug': category.slug} ) }}">{{ category.name }}</a>
+                {% if category.children|length > 0 %}
+                  <ul>
+                    {% for subcategory in category.children %}
+                      <li><a class="text-decoration-none link-dark" href="{{ path('blog_category',
+                              {'slug': subcategory.slug} ) }}">{{ subcategory.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+      </nav>
+    </div>
+    <div class="card-body pb-4"><hr>
+      <nav>
+          <ul>
+              {% if app.user %}
+              <li>
+                  <a href="{{ path('cabinet') }}" class="text-decoration-none link-dark">Logged in as: {{ app.user.email }}</a>
+              </li>
+              <li>
+                  <a href="{{ path('app_logout') }}" class="text-decoration-none link-dark">Logout</a>
+              </li>
+              {% else %}
+              <li>
+                  <a href="{{ path('app_login') }}" class="text-decoration-none link-dark">Login</a>
+              </li>
+              <li>
+                  <a href="{{ path('app_register') }}" class="text-decoration-none link-dark">Register</a>
+              </li>
+              {% endif %}
+          </ul>
+      </nav>
+    <hr>
+    <nav>
+        <ul>
+            {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('admin') }}" class="text-decoration-none link-dark">Admin panel</a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="{{ path('admin_categories') }}" class="text-decoration-none link-dark">Categories</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('category_create') }}" class="text-decoration-none link-dark">Create Category</a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="{{ path('admin_posts') }}" class="text-decoration-none link-dark">Post</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('post_create') }}" class="text-decoration-none link-dark">Create Post</a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="{{ path('admin_pages') }}" class="text-decoration-none link-dark">Page</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('page_create') }}" class="text-decoration-none link-dark">Create Page</a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="{{ path('admin_users') }}" class="text-decoration-none link-dark">Users</a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="{{ path('admin_comments') }}" class="text-decoration-none link-dark">Comments</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_comments_not_active') }}" class="text-decoration-none link-dark">Comments not active</a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        </ul>
+    </nav>
+    </div>
+</div>

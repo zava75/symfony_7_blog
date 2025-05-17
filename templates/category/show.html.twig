@@ -1,0 +1,46 @@
+{% extends 'layouts/template.html.twig' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>{{ category.name }}</h1>
+
+    <div class="row">
+            <div class="col-12 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <p class="card-text">Description : {{ category.description }}</p>
+                        <h6>
+                            <a href="{{ path('api_category', {'id': category.id}) }}" target="_blank">Api</a>
+                        </h6>
+
+                        {% if category.article %}
+                            <hr>
+                            <p class="card-text"><strong>Article:</strong> {{ category.article|nl2br }}</p>
+                        {% endif %}
+
+                        <small class="text-muted">
+                            {% if category.isActive %}
+                                status: active
+                            {% else %}
+                                status: not active
+                            {% endif %}
+                        </small>
+
+                        {% if category.parent %}
+                            <h6>
+                            <a href="{{ path('category', {'id': category.parent.id}) }}">{{ category.parent.name}}</a>
+                            </h6>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Slug: {{ category.slug }}</small>
+
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</div>
+{% endblock %}
