@@ -33,7 +33,7 @@ docker compose up -d
 ### 3. Enter the `php-fpm` container
 
 ```bash
-docker exec -it php-fpm sh
+docker exec -it php-fpm sh -c "composer install && sh"
 ```
 
 ### 4. Inside the container, run the custom Symfony command
