@@ -27,7 +27,7 @@ cd docker
 ### 2. Start all Docker containers
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### 3. Enter the `php-fpm` container
@@ -46,7 +46,6 @@ This command executes:
 php bin/console doctrine:migrations:migrate -n
 php bin/console doctrine:fixtures:load -n
 php bin/console cache:clear -n
-
 
 ### 5. Start the async message queue worker (inside the container)
 
@@ -114,13 +113,14 @@ MAILER_DSN=smtp://<USERNAME>:<PASSWORD>@sandbox.smtp.mailtrap.io:2525
 
 ## 🗂 Docker Volumes and Mounts
 
-| Service     | Host Path                    | Container Path                   |
-|-------------|------------------------------|----------------------------------|
-| App         | `./../`                      | `/var/www/html`                 |
-| NGINX       | `./nginx/conf.d`             | `/etc/nginx/conf.d`            |
-| PostgreSQL  | Named volume `pg_data`       | `/var/lib/postgresql/data`     |
-| PgAdmin     | Named volume `pgadmin_data`  | `/var/lib/pgadmin`             |
-| Init SQL    | `./init`                     | `/docker-entrypoint-initdb.d`  |
+
+| Service    | Host Path                  | Container Path                |
+| ---------- | -------------------------- | ----------------------------- |
+| App        | `./../`                    | `/var/www/html`               |
+| NGINX      | `./nginx/conf.d`           | `/etc/nginx/conf.d`           |
+| PostgreSQL | Named volume`pg_data`      | `/var/lib/postgresql/data`    |
+| PgAdmin    | Named volume`pgadmin_data` | `/var/lib/pgadmin`            |
+| Init SQL   | `./init`                   | `/docker-entrypoint-initdb.d` |
 
 ---
 
